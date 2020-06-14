@@ -1,0 +1,62 @@
+﻿@model tee4.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+
+
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-b-160 p-t-50">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "login100-form validate-form", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <span class="login100-form-title p-b-43">
+                    Join
+                </span>
+
+                <div class="wrap-input100 validate-input" data-validate="Email is required">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "input100", @placeholder = "Email" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Username is required">
+                    @Html.TextBoxFor(m => m.Username, new { @class = "input100", @placeholder = "Uername" })
+                    @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger", @type = "text" })
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                    @Html.TextBoxFor(m => m.Password, new { @class = "input100", @type = "password", @placeholder = "Password" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Password confirmation is required">
+                    @Html.TextBoxFor(m => m.ConfirmationPassword, new { @class = "input100", @type = "password", @placeholder = "Confirm password" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn">
+                        Confirm registration
+                    </button>
+                </div>
+
+                <div class="text-center w-full p-t-23">
+                    <a href="/Account/Login" class="txt1">
+                        Already have an Account? Log in.
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@if (ViewBag.Message != null)
+{
+    <script>
+        alert('@ViewBag.Message');
+    </script>
+
+}

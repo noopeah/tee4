@@ -1,0 +1,85 @@
+﻿@using tee4.Models
+@model TableDisplayModel
+
+@{
+    ViewBag.Title = "Users";
+}
+<link href="~/Content/login.css" rel="stylesheet" />
+<nav class="navbar navbar-expand-lg navbar-dark navbar">
+    <a class="navbar-brand" href="#">Task4</a>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <button class="btn btn-outline-light my-2 my-sm-0 btn-xs ml-2 mr-2" type="submit" form="banform">Block</button>
+@*        <button type="submit" class="badge badge-light ml-1" form="banform">Ban</button>
+*@        <button class="btn btn-outline-light my-2 my-sm-0 btn-xs ml-2 mr-2" formaction="@Url.Action("Forgive", "Home")" type="submit" form="banform">Unblock</button>
+@**@        <!--<button class="badge badge-light ml-1" formaction="@Url.Action("Forgive", "Home")" type="submit" form="banform">Forgive</button>-->
+        <button class="btn btn-outline-light my-2 my-sm-0 btn-xs ml-2 mr-2" formaction="@Url.Action("Delete", "Home")" type="submit" form="banform">Delete</button>
+@**@       @* <button class="badge badge-light ml-1" formaction="@Url.Action("Delete", "Home")" type="submit" form="banform">Delete</button>*@
+    </div>
+    <form method="post" action="/Account/LogOff" class="float-right">
+        @Html.AntiForgeryToken()
+        <button type="submit" class="badge badge-danger">Lof Off</button>
+    </form>
+</nav>
+<div class="ml-4 mr-4 mt-2">
+    @using (Html.BeginForm("Ban", "Home", FormMethod.Post, new { @id = "banform" }))
+    {
+        @Html.AntiForgeryToken()
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col"><input type="checkbox" name="selectAll" id="select-all" /></th>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Registerd on</th>
+                    <th scope="col">Last logged on</th>
+                    <th scope="col">Lockout status</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var row in Model.Users)
+                {
+                    if (row.LockoutEndDateUtc == null)
+                    {
+                        <tr>
+                            <th scope="row">
+                                <input type="checkbox" name="usersToBan" id="usersToBan" value="@row.Id" />
+                            </th>
+                            <td>@row.Id</td>
+                            <td>@row.UserName</td>
+                            <td>@row.Email</td>
+                            <td>@row.RegistrationDate</td>
+                            <td>@row.LastLogin</td>
+                            <td>@(row.LockoutEndDateUtc != null)</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr class="table-warning">
+                            <th scope="row">
+                                <input type="checkbox" name="usersToBan" id="usersToBan" value="@row.Id" />
+                            </th>
+                            <td>@row.Id</td>
+                            <td>@row.UserName</td>
+                            <td>@row.Email</td>
+                            <td>@row.RegistrationDate</td>
+                            <td>@row.LastLogin</td>
+                            <td>@(row.LockoutEndDateUtc != null)</td>
+                        </tr>
+                    }
+
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+<script>
+    document.getElementById('select-all').onclick = function () {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        for (var checkbox of checkboxes) {
+            checkbox.checked = this.checked;
+        }
+    }
+</script>

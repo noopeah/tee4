@@ -1,0 +1,286 @@
+﻿@font-face {
+    font-family: 'Karla', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Karla:wght@400&display=swap');
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Karla', sans-serif, sans-serif;
+}
+
+a {
+    font-family: 'Karla', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #666666;
+    margin: 0px;
+    transition: all 0.4s;
+}
+
+    a:focus {
+        outline: none !important;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: #fff;
+    }
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0px;
+}
+
+p {
+    font-family: 'Karla', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #666666;
+    margin: 0px;
+}
+
+ul, li {
+    margin: 0px;
+    list-style-type: none;
+}
+
+input {
+    outline: none;
+    border: none;
+}
+
+textarea {
+    outline: none;
+    border: none;
+}
+
+label {
+    display: block;
+    margin: 0;
+}
+
+button {
+    outline: none !important;
+    border: none;
+    background: transparent;
+}
+
+    button:hover {
+        cursor: pointer;
+    }
+
+iframe {
+    border: none !important;
+}
+
+.txt1 {
+    font-family: 'Karla', sans-serif;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #cccccc;
+}
+
+.limiter {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.navbar {
+    width: 100%;
+    min-height: 1vh;
+    display: flex;
+    background: #2b5876;
+}
+
+.container-login100 {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: #2b5876;
+    background: -webkit-linear-gradient(left, #2b5876, #4e4376);
+    background: linear-gradient(left, #2b5876, #4e4376);
+}
+
+.wrap-login100 {
+    width: 560px;
+}
+
+.login100-form {
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.login100-form-title {
+    width: 100%;
+    display: block;
+    font-family: 'Karla', sans-serif;
+    font-size: 30px;
+    color: #fefefe;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.wrap-input100 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    width: 50%;
+    height: 75px;
+    position: relative;
+    border: 1px solid #e0e0e0;
+    border-bottom: none;
+    background-color: #fff;
+}
+
+.label-input100 {
+    font-family: 'Karla', sans-serif;
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.2;
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    padding-left: 30px;
+    left: 0;
+    top: 28px;
+    transition: all 0.4s;
+}
+
+.input100 {
+    font-family: 'Karla', sans-serif;
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.2;
+    display: block;
+    width: 100%;
+    background: transparent;
+    padding: 0 30px;
+}
+
+input.input100 {
+    height: 100%;
+    transition: all 0.4s;
+}
+
+.has-val {
+    height: 55px !important;
+}
+
+
+.container-login100-form-btn {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.login100-form-btn {
+    font-family: 'Karla', sans-serif;
+    font-size: 15px;
+    color: #fff;
+    line-height: 1.2;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    height: 70px;
+    overflow: hidden;
+    background: #111111;
+    transition: all 0.4s;
+    position: relative;
+    z-index: 1;
+}
+
+    .login100-form-btn::before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        background: #2b5876;
+        background: -webkit-linear-gradient(left, #4e4376, #2b5876);
+        background: linear-gradient(left, #4e4376, #2b5876);
+        transition: all 0.4s;
+    }
+
+    .login100-form-btn:hover {
+        background-color: transparent;
+    }
+
+        .login100-form-btn:hover:before {
+            opacity: 1;
+        }
+
+.validate-input {
+    position: relative;
+}
+
+.alert-validate::before {
+    content: attr(data-validate);
+    position: absolute;
+    z-index: 100;
+    max-width: 70%;
+    background-color: #fff;
+    border: 1px solid #c80000;
+    padding: 4px 25px 4px 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 12px;
+    pointer-events: none;
+    font-family: 'Karla', sans-serif;
+    color: #c80000;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: left;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.alert-validate::after {
+    content: "!";
+    font-family: FontAwesome;
+    display: block;
+    position: absolute;
+    z-index: 110;
+    color: #c80000;
+    font-size: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 18px;
+}
+
+.alert-validate:hover:before {
+    visibility: visible;
+    opacity: 1;
+}
+
+@media (max-width: 992px) {
+    .alert-validate::before {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@media (max-width: 576px) {
+    .wrap-input100 {
+        width: 100%;
+    }
+}

@@ -1,0 +1,50 @@
+﻿@using tee4.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-b-160 p-t-50">
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "login100-form validate-form", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <span class="login100-form-title p-b-43">
+                    Account Login
+                </span>
+
+                <div class="wrap-input100 validate-input" data-validate="Username is required">
+                    @Html.TextBoxFor(m => m.Username, new { @class = "input100", @placeholder = "Username" })
+                    @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                </div>
+
+
+                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                    @Html.TextBoxFor(m => m.Password, new { @class = "input100", @placeholder = "Password", @type = "password" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" type="submit">
+                        Sign in
+                    </button>
+                </div>
+
+                <div class="text-center w-full p-t-23">
+                    <a href="/Account/Register" class="txt1">
+                        Don't have an account?
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@if (ViewBag.Message != null)
+{
+    <script>
+        alert('@ViewBag.Message');
+    </script>
+
+}
